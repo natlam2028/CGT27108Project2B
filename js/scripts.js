@@ -8,6 +8,67 @@ const PRODUCTS = [
 {id:5,name:'Matcha Cookies',country:'Japan',category:'cookies',price:6.0,img:'images/p5.jpg',desc:'Green tea sandwich cookies.'}
 ];
 
+// Demo product data
+const products = [
+  {
+    id: 1,
+    name: "Honey Butter Chips",
+    price: 3.99,
+    country: "korea",
+    image: "images/honey-butter-chips.jpg"
+  },
+  {
+    id: 2,
+    name: "Pepero Almond",
+    price: 2.49,
+    country: "korea",
+    image: "images/pepero-almond.jpg"
+  },
+  {
+    id: 3,
+    name: "Hi-Chew Mix Pack",
+    price: 4.29,
+    country: "japan",
+    image: "images/hi-chew.jpg"
+  },
+  {
+    id: 4,
+    name: "Pocky Chocolate",
+    price: 2.99,
+    country: "japan",
+    image: "images/pocky-chocolate.jpg"
+  },
+  {
+    id: 5,
+    name: "White Rabbit Candy",
+    price: 3.49,
+    country: "china",
+    image: "images/white-rabbit.jpg"
+  },
+  {
+    id: 6,
+    name: "Lay’s Spicy Crayfish",
+    price: 4.99,
+    country: "china",
+    image: "images/lays-crayfish.jpg"
+  },
+  {
+    id: 7,
+    name: "Sour Patch Kids",
+    price: 2.99,
+    country: "usa",
+    image: "images/sour-patch.jpg"
+  },
+  {
+    id: 8,
+    name: "Reese’s Peanut Butter Cups",
+    price: 1.79,
+    country: "usa",
+    image: "images/reeses.jpg"
+  }
+];
+
+
 
 // Simple cart using localStorage
 function getCart(){
