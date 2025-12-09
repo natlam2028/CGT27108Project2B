@@ -1,131 +1,141 @@
-// Cart page logic
-
+// Cart page functionality
 document.addEventListener('DOMContentLoaded', function() {
-    
-    function displayCart() {
-        const cart = getCart();
-        const container = document.getElementById('cart-items-container');
-        const emptyCart = document.getElementById('empty-cart');
-        const cartSummary = document.getElementById('cart-summary');
-        
-        if (cart.length === 0) {
-            container.innerHTML = '';
-            emptyCart.classList.remove('d-none');
-            cartSummary.classList.add('d-none');
-            return;
-        }
-        
-        emptyCart.classList.add('d-none');
-        cartSummary.classList.remove('d-none');
-        container.innerHTML = '';
-        
-        cart.forEach(item => {
-            const product = snacksData.find(p => p.id === item.id);
-            if (!product) return;
-            
-            const itemTotal = (product.price * item.quantity).toFixed(2);
-            
-            const cartItemHTML = `
-                <div class="card mb-3 cart-item shadow-sm">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-md-2">
-                                <div class="cart-item-image">${product.icon}</div>
-                            </div>
-                            <div class="col-md-4">
-                                <h5 class="mb-1">${product.name}</h5>
-                                <p class="text-muted small mb-1">${product.country} • ${product.category}</p>
-                                <span class="text-primary fw-bold">${product.price.toFixed(2)}</span>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="quantity-control">
-                                    <button class="quantity-btn" onclick="changeQuantity(${product.id}, -1)">
-                                        <i class="bi bi-dash"></i>
-                                    </button>
-                                    <span class="fw-bold">${item.quantity}</span>
-                                    <button class="quantity-btn" onclick="changeQuantity(${product.id}, 1)">
-                                        <i class="bi bi-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="fw-bold fs-5">${itemTotal}</div>
-                            </div>
-                            <div class="col-md-1 text-end">
-                                <button class="btn btn-sm btn-outline-danger" onclick="removeFromCartAndRefresh(${product.id})">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        </div>
+    renderCart();
+    updateCartBadge();
+});
+
+// Render cart items
+function renderCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItems = document.getElementById('cartItems');
+    const emptyCart = document.getElementById('emptyCart');
+    const cartContent = document.getElementById('cartContent');
+
+    if (cart.length === 0) {
+        emptyCart.classList.remove('d-none');
+        cartContent.classList.add('d-none');
+        return;
+    }
+
+    emptyCart.classList.add('d-none');
+    cartContent.classList.remove('d-none');
+
+    cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item mb-4 pb-4 border-bottom" data-id="${item.id}">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <div class="product-image-small d-flex align-items-center justify-content-center" style="height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px;">
+                        <span style="font-size: 2.5rem;">${item.image}</span>
                     </div>
                 </div>
-            `;
-            
-            container.innerHTML += cartItemHTML;
-        });
-        
-        updateCartSummary();
-    }
+                <div class="col-md-4">
+                    <h6 class="mb-1">${item.name}</h6>
+                    <small class="text-muted">
+                        <i class="bi bi-geo-alt"></i> ${item.country} | 
+                        <span class="text-capitalize">${item.category}</span>
+                    </small>
+                </div>
+                <div class="col-md-2">
+                    <span class="text-muted">Price:</span>
+                    <strong class="d-block">$${item.price.toFixed(2)}</strong>
+                </div>
+                <div class="col-md-2">
+                    <label class="text-muted small">Quantity:</label>
+                    <div class="input-group input-group-sm">
+                        <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity(${item.id}, -1)">
+                            <i class="bi bi-dash"></i>
+                        </button>
+                        <input type="number" class="form-control text-center" value="${item.quantity}" min="1" 
+                               onchange="updateQuantityInput(${item.id}, this.value)" id="qty-${item.id}">
+                        <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity(${item.id}, 1)">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-2 text-end">
+                    <strong class="text-primary">$${(item.price * item.quantity).toFixed(2)}</strong>
+                    <br>
+                    <button class="btn btn-sm btn-outline-danger mt-2" onclick="removeFromCart(${item.id})">
+                        <i class="bi bi-trash"></i> Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
 
-    function updateCartSummary() {
-        const cart = getCart();
-        let subtotal = 0;
-        
-        cart.forEach(item => {
-            const product = snacksData.find(p => p.id === item.id);
-            if (product) {
-                subtotal += product.price * item.quantity;
+    updateOrderSummary();
+}
+
+// Update quantity
+function updateQuantity(productId, change) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const item = cart.find(item => item.id === productId);
+    
+    if (item) {
+        item.quantity += change;
+        if (item.quantity < 1) {
+            item.quantity = 1;
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+        updateCartBadge();
+    }
+}
+
+// Update quantity from input
+function updateQuantityInput(productId, value) {
+    const quantity = parseInt(value);
+    if (isNaN(quantity) || quantity < 1) {
+        renderCart(); // Reset to current value
+        return;
+    }
+    
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const item = cart.find(item => item.id === productId);
+    
+    if (item) {
+        item.quantity = quantity;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+        updateCartBadge();
+    }
+}
+
+// Remove from cart
+function removeFromCart(productId) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+    updateCartBadge();
+    showNotification('Item removed from cart');
+}
+
+// Update order summary
+function updateOrderSummary() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const shipping = 5.99;
+    const total = subtotal + shipping;
+
+    document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById('shipping').textContent = `$${shipping.toFixed(2)}`;
+    document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+}
+
+// Checkout button handler
+document.addEventListener('DOMContentLoaded', function() {
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
             }
+            alert('Thank you for your order! This is a demo site, so no actual purchase will be made.');
+            // In a real application, you would redirect to a checkout page or payment gateway
         });
-        
-        const shipping = subtotal >= 50 ? 0 : 5.99;
-        const tax = subtotal * 0.08;
-        const total = subtotal + shipping + tax;
-        
-        document.getElementById('subtotal').textContent = ' + subtotal.toFixed(2);
-        document.getElementById('shipping').textContent = shipping === 0 ? 'FREE' : ' + shipping.toFixed(2);
-        document.getElementById('tax').textContent = ' + tax.toFixed(2);
-        document.getElementById('total').textContent = ' + total.toFixed(2);
     }
-
-    // Make functions globally available
-    window.changeQuantity = function(productId, change) {
-        const cart = getCart();
-        const item = cart.find(i => i.id === productId);
-        
-        if (item) {
-            const newQuantity = item.quantity + change;
-            updateQuantity(productId, newQuantity);
-            displayCart();
-        }
-    };
-
-    window.removeFromCartAndRefresh = function(productId) {
-        removeFromCart(productId);
-        displayCart();
-    };
-
-    // Checkout button handler
-    document.getElementById('checkout-btn').addEventListener('click', function() {
-        const cart = getCart();
-        
-        if (cart.length === 0) {
-            showToast('Your cart is empty!', 'danger');
-            return;
-        }
-        
-        // Simulate checkout
-        showToast('Thank you for your order! (This is a demo)', 'success');
-        
-        // Clear cart after 2 seconds
-        setTimeout(() => {
-            window.cart = [];
-            updateCartCount();
-            displayCart();
-        }, 2000);
-    });
-
-    // Initialize cart display
-    displayCart();
-    updateCartCount();
 });
+
