@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 2004 2823" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-1043.439662,-660.017595)">
+        <g id="candy" transform="matrix(0.969923,-0.243411,0.243411,0.969923,-416.525983,640.419153)">
+            <g transform="matrix(1,0,0,1,-14.617296,0)">
+                <circle cx="2186.17" cy="1454.787" r="210.106" style="fill:rgb(209,125,250);"/>
+            </g>
+            <g>
+                <g transform="matrix(1,0,0,1,66.000766,10.690277)">
+                    <path d="M2218.73,1327.961L2489.24,1272.185L2505.972,1368.6L2546.41,1449.8L2505.972,1530.9L2489.24,1627.3L2218.73,1571.513L2218.73,1327.961Z" style="fill:rgb(209,125,250);"/>
+                </g>
+                <g transform="matrix(-1,0,0,1,4277.105149,10.690277)">
+                    <path d="M2218.73,1327.961L2489.24,1272.185L2505.972,1368.6L2546.41,1449.8L2505.972,1530.9L2489.24,1627.3L2218.73,1571.513L2218.73,1327.961Z" style="fill:rgb(209,125,250);"/>
+                </g>
+            </g>
+        </g>
+        <g>
+            <g id="bag">
+                <g transform="matrix(1,0,0,1,-116.134968,-494.680932)">
+                    <circle cx="2161.348" cy="1972.518" r="713.653" style="fill:none;stroke:rgb(249,212,61);stroke-width:208.33px;"/>
+                </g>
+                <rect x="1043.44" y="1471.631" width="2003.546" height="2010.638" style="fill:rgb(249,212,61);"/>
+            </g>
+            <g id="glass" transform="matrix(1,0,0,1,79.787011,80.673766)">
+                <g transform="matrix(0.301258,0,0,0.301258,1193.723202,1569.487559)">
+                    <circle cx="2170.213" cy="2055.851" r="1197.695" style="fill:none;stroke:rgb(162,171,192);stroke-width:691.54px;stroke-linecap:round;"/>
+                </g>
+                <path d="M2092.592,2530.442C2215.523,2671.104 2444.149,2964.539 2444.149,2964.539" style="fill:none;stroke:rgb(162,171,192);stroke-width:208.33px;"/>
+            </g>
+        </g>
+    </g>
+</svg>
