@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - SnackHub</title>
+    <title>SnackHub - Shop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,13 +13,13 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold fs-3" href="index.html">
-                <span class="text-primary">Snack</span>Hub
+                <i class="bi bi-bag-heart-fill text-primary"></i> SnackHub
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
@@ -26,242 +27,115 @@
                         <a class="nav-link active" href="shop.html">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="favorites.html">Favorites</a>
+                        <a class="nav-link" href="favorites.html">
+                            <i class="bi bi-heart"></i> Favorites
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="account.html">Account</a>
-                    </li>
-                    <li class="nav-item ms-3">
-                        <a class="btn btn-primary btn-sm px-3" href="shop.html">Browse Snacks</a>
+                        <a class="nav-link" href="cart.html">
+                            <i class="bi bi-cart3"></i> Cart <span class="badge bg-primary" id="cart-count">0</span>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Shop Header -->
-    <div class="bg-light py-5">
+    <!-- Shop Section -->
+    <section class="py-5">
         <div class="container">
-            <h1 class="fw-bold mb-3">Browse Our Collection</h1>
-            <p class="text-muted">Discover snacks from around the world</p>
-        </div>
-    </div>
+            <div class="row">
+                <!-- Filters Sidebar -->
+                <div class="col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">
+                                <i class="bi bi-funnel"></i> Filters
+                            </h5>
+                            
+                            <!-- Search -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Search</label>
+                                <input type="text" class="form-control" id="search-input" placeholder="Search snacks...">
+                            </div>
 
-    <!-- Filters & Products -->
-    <div class="container my-5">
-        <div class="row">
-            <!-- Filters Sidebar -->
-            <div class="col-lg-3 mb-4">
-                <div class="filter-card p-4">
-                    <h5 class="fw-bold mb-4">Filters</h5>
+                            <!-- Country Filter -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Country</label>
+                                <select class="form-select" id="country-filter">
+                                    <option value="">All Countries</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Korea">Korea</option>
+                                    <option value="USA">USA</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option value="UK">UK</option>
+                                    <option value="Thailand">Thailand</option>
+                                </select>
+                            </div>
+
+                            <!-- Category Filter -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Category</label>
+                                <select class="form-select" id="category-filter">
+                                    <option value="">All Categories</option>
+                                    <option value="Chips">Chips</option>
+                                    <option value="Candy">Candy</option>
+                                    <option value="Chocolate">Chocolate</option>
+                                    <option value="Cookies">Cookies</option>
+                                    <option value="Crackers">Crackers</option>
+                                </select>
+                            </div>
+
+                            <!-- Price Range -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Price Range</label>
+                                <div class="d-flex gap-2 align-items-center">
+                                    <input type="number" class="form-control" id="min-price" placeholder="Min" min="0">
+                                    <span>-</span>
+                                    <input type="number" class="form-control" id="max-price" placeholder="Max" min="0">
+                                </div>
+                            </div>
+
+                            <!-- Sort By -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Sort By</label>
+                                <select class="form-select" id="sort-filter">
+                                    <option value="name-asc">Name (A-Z)</option>
+                                    <option value="name-desc">Name (Z-A)</option>
+                                    <option value="price-asc">Price (Low to High)</option>
+                                    <option value="price-desc">Price (High to Low)</option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn-outline-secondary w-100" id="clear-filters">
+                                <i class="bi bi-x-circle"></i> Clear Filters
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="col-lg-9">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>All Snacks</h2>
+                        <span class="text-muted" id="results-count">0 products</span>
+                    </div>
                     
-                    <!-- Country Filter -->
-                    <div class="mb-4">
-                        <h6 class="fw-semibold mb-3">Country</h6>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="japan">
-                            <label class="form-check-label" for="japan">Japan</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="usa">
-                            <label class="form-check-label" for="usa">USA</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="europe">
-                            <label class="form-check-label" for="europe">Europe</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="korea">
-                            <label class="form-check-label" for="korea">Korea</label>
-                        </div>
+                    <div class="row g-4" id="products-container">
+                        <!-- Products populated by JavaScript -->
                     </div>
 
-                    <!-- Price Filter -->
-                    <div class="mb-4">
-                        <h6 class="fw-semibold mb-3">Price Range</h6>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="under5">
-                            <label class="form-check-label" for="under5">Under $5</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="5to10">
-                            <label class="form-check-label" for="5to10">$5 - $10</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="10to20">
-                            <label class="form-check-label" for="10to20">$10 - $20</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="over20">
-                            <label class="form-check-label" for="over20">Over $20</label>
-                        </div>
-                    </div>
-
-                    <!-- Category Filter -->
-                    <div class="mb-4">
-                        <h6 class="fw-semibold mb-3">Category</h6>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="chocolate">
-                            <label class="form-check-label" for="chocolate">Chocolate</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="cookies">
-                            <label class="form-check-label" for="cookies">Cookies</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="savory">
-                            <label class="form-check-label" for="savory">Savory</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="candy">
-                            <label class="form-check-label" for="candy">Candy</label>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary w-100">Apply Filters</button>
-                    <button class="btn btn-outline-secondary w-100 mt-2">Clear All</button>
-                </div>
-            </div>
-
-            <!-- Products Grid -->
-            <div class="col-lg-9">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <p class="text-muted mb-0">Showing 12 products</p>
-                    <select class="form-select w-auto">
-                        <option>Sort by: Featured</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                        <option>Newest</option>
-                    </select>
-                </div>
-
-                <div class="row g-4">
-                    <!-- Product Card 1 -->
-                    <div class="col-md-4">
-                        <div class="product-card">
-                            <div class="product-image">
-                                <div class="badge-country">Japan</div>
-                                <button class="btn-favorite">❤</button>
-                            </div>
-                            <div class="p-3">
-                                <h6 class="fw-semibold mb-2">Pocky Chocolate</h6>
-                                <p class="text-muted small mb-2">Classic biscuit sticks</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">$4.99</span>
-                                    <button class="btn btn-sm btn-primary">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 2 -->
-                    <div class="col-md-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background: linear-gradient(135deg, #f5576c, #f093fb);">
-                                <div class="badge-country">Europe</div>
-                                <button class="btn-favorite">❤</button>
-                            </div>
-                            <div class="p-3">
-                                <h6 class="fw-semibold mb-2">Lindt Chocolate</h6>
-                                <p class="text-muted small mb-2">Swiss premium chocolate</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">$12.99</span>
-                                    <button class="btn btn-sm btn-primary">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 3 -->
-                    <div class="col-md-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-                                <div class="badge-country">USA</div>
-                                <button class="btn-favorite">❤</button>
-                            </div>
-                            <div class="p-3">
-                                <h6 class="fw-semibold mb-2">Oreo Cookies</h6>
-                                <p class="text-muted small mb-2">Classic sandwich cookies</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">$5.49</span>
-                                    <button class="btn btn-sm btn-primary">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 4 -->
-                    <div class="col-md-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background: linear-gradient(135deg, #fa709a, #fee140);">
-                                <div class="badge-country">Korea</div>
-                                <button class="btn-favorite">❤</button>
-                            </div>
-                            <div class="p-3">
-                                <h6 class="fw-semibold mb-2">Honey Butter Chips</h6>
-                                <p class="text-muted small mb-2">Sweet and savory chips</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">$6.99</span>
-                                    <button class="btn btn-sm btn-primary">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 5 -->
-                    <div class="col-md-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
-                                <div class="badge-country">Japan</div>
-                                <button class="btn-favorite">❤</button>
-                            </div>
-                            <div class="p-3">
-                                <h6 class="fw-semibold mb-2">Matcha Kit Kat</h6>
-                                <p class="text-muted small mb-2">Green tea chocolate wafer</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">$8.99</span>
-                                    <button class="btn btn-sm btn-primary">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Card 6 -->
-                    <div class="col-md-4">
-                        <div class="product-card">
-                            <div class="product-image" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
-                                <div class="badge-country">Europe</div>
-                                <button class="btn-favorite">❤</button>
-                            </div>
-                            <div class="p-3">
-                                <h6 class="fw-semibold mb-2">Haribo Gummy Bears</h6>
-                                <p class="text-muted small mb-2">German fruit gummies</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">$3.99</span>
-                                    <button class="btn btn-sm btn-primary">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="no-results" class="text-center py-5 d-none">
+                        <i class="bi bi-search fs-1 text-muted"></i>
+                        <p class="text-muted mt-3">No snacks found matching your filters.</p>
+                        <button class="btn btn-primary" onclick="document.getElementById('clear-filters').click()">
+                            Clear Filters
+                        </button>
                     </div>
                 </div>
-
-                <!-- Pagination -->
-                <nav class="mt-5">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">Previous</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-4 mt-5">
@@ -271,5 +145,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script src="shop.js"></script>
 </body>
 </html>
