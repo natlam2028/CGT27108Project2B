@@ -1,24 +1,27 @@
-/*<!-- FILE: styles.css -->*/
-/* Minimal, trendy aesthetic */
-:root{
---accent:#0d6efd;
---muted:#6c757d;
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
 }
-html,body{height:100%;}
-body{background:#fbfbfc;color:#212529;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
-.navbar-brand{letter-spacing:0.6px}
-.cover-img{object-fit:cover;height:85vh}
-.card{border:none}
-.sticky-top{z-index:10}
-.product-card{transition:transform .15s ease, box-shadow .15s ease}
-.product-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.08)}
-.badge-round{border-radius:999px;padding:.35rem .6rem}
 
+.navbar-brand {
+    font-size: 1.8rem;
+}
 
-/* product grid image */
-.prod-img{height:160px;object-fit:contain;background:#fff;padding:1rem}
+.carousel-img {
+    height: 80vh;
+    object-fit: cover;
+}
 
+.card img {
+    object-fit: cover;
+    height: 200px;
+}
 
-@media (max-width:767px){
-.cover-img{height:60vh}
+.btn-outline-danger {
+    transition: all 0.3s;
+}
+
+.btn-outline-danger:hover {
+    background-color: #ff4d4f;
+    color: white;
 }
