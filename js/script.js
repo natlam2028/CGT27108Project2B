@@ -1,6 +1,6 @@
 // Product Data
 const products = [
-    { id: 1, name: "Japanese Kit Kat Matcha", country: "Japan", price: 8.99, category: "chocolate", image: "images/logostill.svg" },
+    { id: 1, name: "Japanese Kit Kat Matcha", country: "Japan", price: 8.99, category: "chocolate", image: "🍫" },
     { id: 2, name: "Korean Honey Butter Chips", country: "Korea", price: 6.99, category: "chips", image: "🍯" },
     { id: 3, name: "Mexican Takis Fuego", country: "Mexico", price: 4.99, category: "chips", image: "🌶️" },
     { id: 4, name: "British Cadbury Dairy Milk", country: "UK", price: 5.99, category: "chocolate", image: "🍫" },
@@ -291,5 +291,6 @@ function showNotification(message) {
         notification.remove();
     }, 3000);
 }
+
 
 
