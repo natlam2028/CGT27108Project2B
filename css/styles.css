@@ -1,0 +1,19 @@
+<!-- FILE: styles.css -->
+if(e.target.matches('.qty-input')){
+// nothing yet
+}
+});
+}
+
+
+// Page initialization
+window.addEventListener('DOMContentLoaded',()=>{
+updateNavCounts(); populateHome(); populateProducts(); populateProductDetail(); populateCartPage(); populateCheckout(); globalBinder();
+document.getElementById('apply-filters')?.addEventListener('click',applyFilters);
+document.getElementById('clear-filters')?.addEventListener('click',()=>{document.getElementById('filter-country').value='all';document.getElementById('filter-category').value='all';document.getElementById('price-min').value='';document.getElementById('price-max').value='';applyFilters();});
+document.getElementById('checkout-form')?.addEventListener('submit',(e)=>{e.preventDefault(); localStorage.removeItem('cart'); showToast('Order placed — demo only'); window.location.href='home.html';});
+});
+
+
+// Expose PRODUCTS for debugging in demo
+window.PRODUCTS = PRODUCTS;

@@ -1,0 +1,101 @@
+nav {
+    background-color: #8ED1D9;
+}
+
+p {
+    font-size: large;
+}
+
+/* nav div ul li a {
+    color: white;
+} */
+
+a {
+    text-decoration: none; 
+    color: #8ED1D9; 
+    font-weight: bold;
+}
+
+a:hover {
+    color: #203f78
+}
+
+img, video {
+    margin: auto;
+}
+
+.carouselitems {
+    object-position: center;
+    display: flex;
+    align-items: center;    
+    object-fit: cover;
+    overflow: hidden;
+    max-width:100%;
+    height: 50vh;
+}
+
+ol.carousel-indicators li {
+    font-size: 0;
+}
+
+.bg-highlight {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#myfooter {
+    background-color: #016666;
+    /* font-size: small; */
+}
+
+.listing {
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#listingpic {
+    max-height: 50vh;
+    display: flex;
+    align-items: center;
+}
+
+.buttoncss {
+    margin: 1vh;
+    background-color: #240166;
+    /* font-weight: 500; */
+    font-size: 3vh;
+}
+
+.topper {
+    background-color: #002e45;
+}
+
+
+.imgcss2 {
+    max-height: 50vh;
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+}
+
+.pcss {
+    /* margin-top: 100vh; */
+}
+
+#vid, .imgcss {
+    max-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formcss {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form div {
+    width: 50vh;
+}
