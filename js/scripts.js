@@ -1,4 +1,4 @@
-<!-- FILE: scripts.js -->
+//<!-- FILE: scripts.js -->
 // Minimal JavaScript for demo functionality (no backend)
 const PRODUCTS = [
 {id:1,name:'Wasabi Chips',country:'Japan',category:'chips',price:4.5,img:'images/p1.jpg',desc:'Crispy wasabi flavored chips.'},
