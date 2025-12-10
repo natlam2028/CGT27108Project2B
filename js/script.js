@@ -1,7 +1,7 @@
 // Product Data
 // Note: Replace these placeholder URLs with your actual product image URLs
 const products = [
-    { id: 1, name: "Japanese Kit Kat Matcha", country: "Japan", price: 8.99, category: "chocolate", image: "https://images.unsplash.com/photo-1606312619070-d48b4cbc7135?w=400&h=400&fit=crop" },
+    { id: 1, name: "Japanese Kit Kat Matcha", country: "Japan", price: 8.99, category: "chocolate", image: "images/logo still.svg" },
     { id: 2, name: "Korean Honey Butter Chips", country: "Korea", price: 6.99, category: "chips", image: "https://images.unsplash.com/photo-1612929633733-8d67850ec1da?w=400&h=400&fit=crop" },
     { id: 3, name: "Mexican Takis Fuego", country: "Mexico", price: 4.99, category: "chips", image: "https://images.unsplash.com/photo-1612929633733-8d67850ec1da?w=400&h=400&fit=crop" },
     { id: 4, name: "British Cadbury Dairy Milk", country: "UK", price: 5.99, category: "chocolate", image: "https://images.unsplash.com/photo-1606312619070-d48b4cbc7135?w=400&h=400&fit=crop" },
@@ -292,4 +292,5 @@ function showNotification(message) {
         notification.remove();
     }, 3000);
 }
+
 
