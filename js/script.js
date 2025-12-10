@@ -1,35 +1,36 @@
 // Product Data
+// Note: Replace these placeholder URLs with your actual product image URLs
 const products = [
-    { id: 1, name: "Japanese Kit Kat Matcha", country: "Japan", price: 8.99, category: "chocolate", image: "images/logo still.svg" },
-    { id: 2, name: "Korean Honey Butter Chips", country: "Korea", price: 6.99, category: "chips", image: "🍯" },
-    { id: 3, name: "Mexican Takis Fuego", country: "Mexico", price: 4.99, category: "chips", image: "🌶️" },
-    { id: 4, name: "British Cadbury Dairy Milk", country: "UK", price: 5.99, category: "chocolate", image: "🍫" },
-    { id: 5, name: "Thai Shrimp Chips", country: "Thailand", price: 7.99, category: "chips", image: "🦐" },
-    { id: 6, name: "German Haribo Gummy Bears", country: "Germany", price: 3.99, category: "candy", image: "🐻" },
-    { id: 7, name: "French Macarons", country: "France", price: 12.99, category: "cookies", image: "🍪" },
-    { id: 8, name: "Japanese Pocky Strawberry", country: "Japan", price: 5.99, category: "cookies", image: "🍓" },
-    { id: 9, name: "American Oreo Cookies", country: "USA", price: 4.99, category: "cookies", image: "🍪" },
-    { id: 10, name: "Korean Pepero", country: "Korea", price: 6.99, category: "cookies", image: "🍫" },
-    { id: 11, name: "Japanese Calbee Chips", country: "Japan", price: 7.99, category: "chips", image: "🥔" },
-    { id: 12, name: "Mexican Churritos", country: "Mexico", price: 3.99, category: "chips", image: "🌽" },
-    { id: 13, name: "Thai Mango Sticky Rice Snack", country: "Thailand", price: 9.99, category: "candy", image: "🥭" },
-    { id: 14, name: "German Ritter Sport", country: "Germany", price: 6.99, category: "chocolate", image: "🍫" },
-    { id: 15, name: "French Bonne Maman Cookies", country: "France", price: 8.99, category: "cookies", image: "🍪" },
-    { id: 16, name: "American Pop-Tarts", country: "USA", price: 5.99, category: "cookies", image: "🧁" },
-    { id: 17, name: "Japanese Hi-Chew", country: "Japan", price: 4.99, category: "candy", image: "🍬" },
-    { id: 18, name: "Korean Choco Pie", country: "Korea", price: 7.99, category: "cookies", image: "🍰" },
-    { id: 19, name: "Thai Coconut Chips", country: "Thailand", price: 6.99, category: "chips", image: "🥥" },
-    { id: 20, name: "British Walkers Crisps", country: "UK", price: 4.99, category: "chips", image: "🥔" },
-    { id: 21, name: "Japanese Ramune Soda", country: "Japan", price: 5.99, category: "drinks", image: "🥤" },
-    { id: 22, name: "Korean Banana Milk", country: "Korea", price: 4.99, category: "drinks", image: "🍌" },
-    { id: 23, name: "Mexican Jarritos", country: "Mexico", price: 3.99, category: "drinks", image: "🍹" },
-    { id: 24, name: "American Mountain Dew", country: "USA", price: 2.99, category: "drinks", image: "🥤" },
-    { id: 25, name: "Japanese Almonds", country: "Japan", price: 11.99, category: "nuts", image: "🥜" },
-    { id: 26, name: "Korean Roasted Seaweed", country: "Korea", price: 5.99, category: "chips", image: "🌿" },
-    { id: 27, name: "Thai Cashew Nuts", country: "Thailand", price: 9.99, category: "nuts", image: "🥜" },
-    { id: 28, name: "German Nutella", country: "Germany", price: 6.99, category: "chocolate", image: "🍫" },
-    { id: 29, name: "French Madeleines", country: "France", price: 10.99, category: "cookies", image: "🍰" },
-    { id: 30, name: "American Twizzlers", country: "USA", price: 3.99, category: "candy", image: "🍬" }
+    { id: 1, name: "Japanese Kit Kat Matcha", country: "Japan", price: 8.99, category: "chocolate", image: "https://images.unsplash.com/photo-1606312619070-d48b4cbc7135?w=400&h=400&fit=crop" },
+    { id: 2, name: "Korean Honey Butter Chips", country: "Korea", price: 6.99, category: "chips", image: "https://images.unsplash.com/photo-1612929633733-8d67850ec1da?w=400&h=400&fit=crop" },
+    { id: 3, name: "Mexican Takis Fuego", country: "Mexico", price: 4.99, category: "chips", image: "https://images.unsplash.com/photo-1612929633733-8d67850ec1da?w=400&h=400&fit=crop" },
+    { id: 4, name: "British Cadbury Dairy Milk", country: "UK", price: 5.99, category: "chocolate", image: "https://images.unsplash.com/photo-1606312619070-d48b4cbc7135?w=400&h=400&fit=crop" },
+    { id: 5, name: "Thai Shrimp Chips", country: "Thailand", price: 7.99, category: "chips", image: "https://images.unsplash.com/photo-1612929633733-8d67850ec1da?w=400&h=400&fit=crop" },
+    { id: 6, name: "German Haribo Gummy Bears", country: "Germany", price: 3.99, category: "candy", image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop" },
+    { id: 7, name: "French Macarons", country: "France", price: 12.99, category: "cookies", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=400&fit=crop" },
+    { id: 8, name: "Japanese Pocky Strawberry", country: "Japan", price: 5.99, category: "cookies", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=400&fit=crop" },
+    { id: 9, name: "American Oreo Cookies", country: "USA", price: 4.99, category: "cookies", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=400&fit=crop" },
+    { id: 10, name: "Korean Pepero", country: "Korea", price: 6.99, category: "cookies", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=400&fit=crop" },
+    { id: 11, name: "Japanese Calbee Chips", country: "Japan", price: 7.99, category: "chips", image: "https://images.unsplash.com/photo-1612929633733-8d67850ec1da?w=400&h=400&fit=crop" },
+    { id: 12, name: "Mexican Churritos", country: "Mexico", price: 3.99, category: "chips", image: "https://images.unsplash.com/photo-1612929633733-8d67850ec1da?w=400&h=400&fit=crop" },
+    { id: 13, name: "Thai Mango Sticky Rice Snack", country: "Thailand", price: 9.99, category: "candy", image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop" },
+    { id: 14, name: "German Ritter Sport", country: "Germany", price: 6.99, category: "chocolate", image: "https://images.unsplash.com/photo-1606312619070-d48b4cbc7135?w=400&h=400&fit=crop" },
+    { id: 15, name: "French Bonne Maman Cookies", country: "France", price: 8.99, category: "cookies", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=400&fit=crop" },
+    { id: 16, name: "American Pop-Tarts", country: "USA", price: 5.99, category: "cookies", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=400&fit=crop" },
+    { id: 17, name: "Japanese Hi-Chew", country: "Japan", price: 4.99, category: "candy", image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop" },
+    { id: 18, name: "Korean Choco Pie", country: "Korea", price: 7.99, category: "cookies", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=400&fit=crop" },
+    { id: 19, name: "Thai Coconut Chips", country: "Thailand", price: 6.99, category: "chips", image: "https://images.unsplash.com/photo-1612929633733-8d67850ec1da?w=400&h=400&fit=crop" },
+    { id: 20, name: "British Walkers Crisps", country: "UK", price: 4.99, category: "chips", image: "https://images.unsplash.com/photo-1612929633733-8d67850ec1da?w=400&h=400&fit=crop" },
+    { id: 21, name: "Japanese Ramune Soda", country: "Japan", price: 5.99, category: "drinks", image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400&h=400&fit=crop" },
+    { id: 22, name: "Korean Banana Milk", country: "Korea", price: 4.99, category: "drinks", image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400&h=400&fit=crop" },
+    { id: 23, name: "Mexican Jarritos", country: "Mexico", price: 3.99, category: "drinks", image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400&h=400&fit=crop" },
+    { id: 24, name: "American Mountain Dew", country: "USA", price: 2.99, category: "drinks", image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400&h=400&fit=crop" },
+    { id: 25, name: "Japanese Almonds", country: "Japan", price: 11.99, category: "nuts", image: "https://images.unsplash.com/photo-1606312619070-d48b4cbc7135?w=400&h=400&fit=crop" },
+    { id: 26, name: "Korean Roasted Seaweed", country: "Korea", price: 5.99, category: "chips", image: "https://images.unsplash.com/photo-1612929633733-8d67850ec1da?w=400&h=400&fit=crop" },
+    { id: 27, name: "Thai Cashew Nuts", country: "Thailand", price: 9.99, category: "nuts", image: "https://images.unsplash.com/photo-1606312619070-d48b4cbc7135?w=400&h=400&fit=crop" },
+    { id: 28, name: "German Nutella", country: "Germany", price: 6.99, category: "chocolate", image: "https://images.unsplash.com/photo-1606312619070-d48b4cbc7135?w=400&h=400&fit=crop" },
+    { id: 29, name: "French Madeleines", country: "France", price: 10.99, category: "cookies", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=400&fit=crop" },
+    { id: 30, name: "American Twizzlers", country: "USA", price: 3.99, category: "candy", image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=400&fit=crop" }
 ];
 
 let filteredProducts = [...products];
@@ -185,7 +186,7 @@ function renderProducts(productsToRender) {
         <div class="col-md-6 col-lg-4">
             <div class="card product-card shadow-sm">
                 <div class="product-image">
-                    <span style="font-size: 4rem;">${product.image}</span>
+                    <img src="${product.image}" alt="${product.name}" class="img-fluid" onerror="this.src='https://via.placeholder.com/400x400?text=No+Image'">
                 </div>
                 <div class="card-body">
                     <span class="product-country">
@@ -291,7 +292,4 @@ function showNotification(message) {
         notification.remove();
     }, 3000);
 }
-
-
-
 

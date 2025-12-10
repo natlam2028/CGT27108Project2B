@@ -24,8 +24,8 @@ function renderCart() {
         <div class="cart-item mb-4 pb-4 border-bottom" data-id="${item.id}">
             <div class="row align-items-center">
                 <div class="col-md-2">
-                    <div class="product-image-small d-flex align-items-center justify-content-center" style="height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px;">
-                        <span style="font-size: 2.5rem;">${item.image}</span>
+                    <div class="product-image-small d-flex align-items-center justify-content-center" style="height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; overflow: hidden;">
+                        <img src="${item.image}" alt="${item.name}" class="img-fluid" style="max-height: 100%; max-width: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/80x80?text=No+Image'">
                     </div>
                 </div>
                 <div class="col-md-4">
